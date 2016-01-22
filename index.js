@@ -19189,7 +19189,7 @@ var ExtractionWidget = React.createClass({
                     React.createElement(
                         'div',
                         { className: 'section' },
-                        'Extractor'
+                        'Extractor (Basic)'
                     ),
                     React.createElement(
                         'div',

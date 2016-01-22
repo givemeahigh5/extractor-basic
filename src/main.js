@@ -149,7 +149,7 @@ var ExtractionWidget = React.createClass({
             <div>
                 <div id="title">
                     <div className="holder">
-                        <div className="section">Extractor</div>
+                        <div className="section">Extractor (Basic)</div>
                         <div className="section">
                             <BrewTypeSelectorButton brewType={this.state.brewType} showBrewTypeMenu={this.state.showBrewTypeMenu} toggleBrewTypeMenu={this.toggleBrewTypeMenu} />
                         </div>
