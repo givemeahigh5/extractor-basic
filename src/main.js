@@ -149,7 +149,7 @@ var ExtractionWidget = React.createClass({
             <div>
                 <div id="title">
                     <div className="holder">
-                        <div className="section">Extractor (Basic)</div>
+                        <div className="section">Extractor</div>
                         <div className="section">
                             <BrewTypeSelectorButton brewType={this.state.brewType} showBrewTypeMenu={this.state.showBrewTypeMenu} toggleBrewTypeMenu={this.toggleBrewTypeMenu} />
                         </div>
@@ -238,25 +238,29 @@ var ExtractionWidget = React.createClass({
 var BrewTypeSelectorButton = React.createClass({
 
     render: function() {
-
         return (
-            <div className='brew-type-toggle' onClick={this.props.toggleBrewTypeMenu}>
-                {this.props.brewType.toUpperCase()} <img className="menu-button-arrow" src="./public/down-arrow.png" />
+            <div className="brew-type-toggle" onClick={this.props.toggleBrewTypeMenu}>
+                {this.props.brewType.toUpperCase()}<img className="menu-button-arrow" src="./public/down-arrow.png" />
             </div>
-        )
+        );
     }
 });
 
 
 var BrewTypeMenu = React.createClass({
 
+    selectBrewType(e) {
+        var brewType = e.target.innerHTML.toLowerCase();
+        this.props.selectBrewType(brewType);
+    },
+
     render: function() {
-        var component = this;
-        var brewTypes = this.props.data.map(function(brewType, i) {
-            return (
-                <div className="menu-item" key={brewType.id}><a onClick={() => component.props.selectBrewType(brewType.id)}>{brewType.name}</a></div>
-            )
-        });
+        var typeArray = this.props.data;
+        var brewTypes = [];
+
+        for(var i = 0; i < typeArray.length; i++) {
+            brewTypes.push(<div className="menu-item" key={typeArray[i].id} onClick={this.selectBrewType}>{typeArray[i].name}</div>);
+        }
 
         var displayClass = "brew-type-menu " + (this.props.showBrewTypeMenu ? "show-menu" : "");
 
@@ -276,21 +280,23 @@ var InputBox = React.createClass({
         this.props.onUpdate(field, val);
     },
 
-    handleClick(direction) {
-        var field = this.props.structure.id;
-        var step = this.props.structure.step;
-        this.props.onUpdateArrow(field, step, direction);
+    clickIncrement() {
+        this.props.onUpdateArrow(this.props.structure.id, this.props.structure.step, "up");
+    },
+
+    clickDecrement() {
+        this.props.onUpdateArrow(this.props.structure.id, this.props.structure.step, "down");
     },
 
     render: function() {
         return (
             <div>
-                <div className="arrow"><img src="./public/big-down-arrow.png" onClick={() => this.handleClick("down")} /></div>
+                <div className="arrow"><img src="./public/big-down-arrow.png" onClick={this.clickDecrement} /></div>
                 <div id={this.props.structure.id} className='inputBox'>
                     <input type="text" value={this.props.boxValue} onChange={this.update} onFocus={this.onTextFocus} onBlur={this.onTextBlur} />
                     <div className='sliderbox-title'>{this.props.structure.text}</div>
                 </div>
-                <div className="arrow"><img src="./public/big-up-arrow.png" onClick={() => this.handleClick("up")} /></div>
+                <div className="arrow"><img src="./public/big-up-arrow.png" onClick={this.clickIncrement} /></div>
             </div>
         );
     },

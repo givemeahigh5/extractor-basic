@@ -49,15 +49,16 @@ body {
 
 .brew-type-toggle {
     display: inline-block;
-    width: 130px;
+    min-width: 130px;
     padding: 10px 15px;
     background-color: #36d1d3;
     text-align: right;
+    font-size: 14px;
 }
 
 .brew-type-menu {
     display: none;
-    width: 100%;
+    width: auto;
     margin: 0 auto;
     padding: 10px 2.5%;
     max-width: 500px;
@@ -69,8 +70,9 @@ body {
 }
 
 .brew-type-menu div {
-    width: 33%;
-    display: inline-block;
+    width: auto;
+    display: block;
+    padding: 15px 0;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
@@ -81,6 +83,8 @@ body {
 .menu-button-arrow {
     padding-left: 10px;
     vertical-align: bottom;
+    height: 18px;
+    width: auto;
 }
 
 
@@ -88,7 +92,7 @@ body {
 
 .inputBox {
     display: inline-block;
-    width: 29%;
+    width: 40%;
     margin: 0 auto 10px auto;
     padding: 10px 2%;
     text-align: center;
@@ -100,7 +104,7 @@ body {
 
 .arrow {
     display: inline-block;
-    width: 29%;
+    width: 23%;
     margin: 0 auto 10px auto;
     padding: 10px 2%;
     text-align: center;
@@ -146,6 +150,19 @@ body {
         height: auto;
         margin: 20px auto 0 auto;
         padding: 20px 2.5%;
+    }
+
+    .brew-type-toggle {
+        font-size: 18px;
+    }
+
+    .menu-button-arrow {
+        height: 22px;
+    }
+
+    .brew-type-menu div {
+        width: 33%;
+        display: inline-block;
     }
 }
 

@@ -19189,7 +19189,7 @@ var ExtractionWidget = React.createClass({
                     React.createElement(
                         'div',
                         { className: 'section' },
-                        'Extractor (Basic)'
+                        'Extractor'
                     ),
                     React.createElement(
                         'div',
@@ -19281,12 +19281,10 @@ var BrewTypeSelectorButton = React.createClass({
     displayName: 'BrewTypeSelectorButton',
 
     render: function () {
-
         return React.createElement(
             'div',
             { className: 'brew-type-toggle', onClick: this.props.toggleBrewTypeMenu },
             this.props.brewType.toUpperCase(),
-            ' ',
             React.createElement('img', { className: 'menu-button-arrow', src: './public/down-arrow.png' })
         );
     }
@@ -19295,19 +19293,22 @@ var BrewTypeSelectorButton = React.createClass({
 var BrewTypeMenu = React.createClass({
     displayName: 'BrewTypeMenu',
 
+    selectBrewType(e) {
+        var brewType = e.target.innerHTML.toLowerCase();
+        this.props.selectBrewType(brewType);
+    },
+
     render: function () {
-        var component = this;
-        var brewTypes = this.props.data.map(function (brewType, i) {
-            return React.createElement(
+        var typeArray = this.props.data;
+        var brewTypes = [];
+
+        for (var i = 0; i < typeArray.length; i++) {
+            brewTypes.push(React.createElement(
                 'div',
-                { className: 'menu-item', key: brewType.id },
-                React.createElement(
-                    'a',
-                    { onClick: () => component.props.selectBrewType(brewType.id) },
-                    brewType.name
-                )
-            );
-        });
+                { className: 'menu-item', key: typeArray[i].id, onClick: this.selectBrewType },
+                typeArray[i].name
+            ));
+        }
 
         var displayClass = "brew-type-menu " + (this.props.showBrewTypeMenu ? "show-menu" : "");
 
@@ -19328,10 +19329,12 @@ var InputBox = React.createClass({
         this.props.onUpdate(field, val);
     },
 
-    handleClick(direction) {
-        var field = this.props.structure.id;
-        var step = this.props.structure.step;
-        this.props.onUpdateArrow(field, step, direction);
+    clickIncrement() {
+        this.props.onUpdateArrow(this.props.structure.id, this.props.structure.step, "up");
+    },
+
+    clickDecrement() {
+        this.props.onUpdateArrow(this.props.structure.id, this.props.structure.step, "down");
     },
 
     render: function () {
@@ -19341,7 +19344,7 @@ var InputBox = React.createClass({
             React.createElement(
                 'div',
                 { className: 'arrow' },
-                React.createElement('img', { src: './public/big-down-arrow.png', onClick: () => this.handleClick("down") })
+                React.createElement('img', { src: './public/big-down-arrow.png', onClick: this.clickDecrement })
             ),
             React.createElement(
                 'div',
@@ -19356,7 +19359,7 @@ var InputBox = React.createClass({
             React.createElement(
                 'div',
                 { className: 'arrow' },
-                React.createElement('img', { src: './public/big-up-arrow.png', onClick: () => this.handleClick("up") })
+                React.createElement('img', { src: './public/big-up-arrow.png', onClick: this.clickIncrement })
             )
         );
     },
