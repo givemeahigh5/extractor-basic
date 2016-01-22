@@ -1,0 +1,30 @@
+{
+    "input": {
+        "drip": {
+            "water": { "id": "water", "text": "Water (g)", "min": "200", "max": "490", "step": "1", "init": "345" },
+            "coffee": { "id": "coffee", "text": "Coffee (g)", "min": "10", "max": "35", "step": "0.1", "init": "22.5" },
+            "tds": { "id": "tds", "text": "TDS (%)", "min": "1", "max": "2", "step": "0.01", "init": "1.4" },
+            "absorption": { "id": "absorption", "text": "Absorption (g/g)", "min": "1", "max": "3", "step": "0.01", "init": "2.1" },
+            "yield": { "init": null}
+        },
+        "immersion": {
+            "water": { "id": "water", "text": "Water (g)", "min": "250", "max": "550", "step": "1", "init": "350" },
+            "coffee": { "id": "coffee", "text": "Coffee (g)", "min": "10", "max": "35", "step": "0.1", "init": "25" },
+            "tds": { "id": "tds", "text": "TDS (%)", "min": "1", "max": "2", "step": "0.01", "init": "1.4" },
+            "absorption": { "id": "absorption", "text": "Absorption (g/g)", "min": "1.5", "max": "3.5", "step": "0.01", "init": "2.5" },
+            "yield": { "init": null}
+        },
+        "espresso": {
+            "water": { "init": null},
+            "coffee": { "id": "coffee", "text":"Coffee (g)", "min": "10", "max": "25", "step": "0.1", "init": "18" },
+            "tds": { "id": "tds", "text": "TDS (%)", "min": "7", "max": "15", "step": "0.01", "init": "10" },
+            "absorption": { "id": "absorption", "text": "Absorption (g/g)", "min": "1", "max": "3", "step": "0.01", "init": "1.2" },
+            "yield": { "id": "yield", "text": "Yield (g)", "min": "20", "max": "50", "step": "0.1", "init": "36" }
+        }
+    },
+    "output": {
+        "ratio": { "id": "ratio", "text": "Brew Ratio" },
+        "yield": { "id": "yield", "text": "Yield" },
+        "extraction": { "id": "extraction", "text": "Extraction" }        
+    }
+};
