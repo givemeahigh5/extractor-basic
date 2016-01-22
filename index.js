@@ -19281,12 +19281,13 @@ var BrewTypeSelectorButton = React.createClass({
     displayName: 'BrewTypeSelectorButton',
 
     render: function () {
-        var text = this.props.showBrewTypeMenu ? "Select" : this.props.brewType.toUpperCase();
 
         return React.createElement(
             'div',
             { className: 'brew-type-toggle', onClick: this.props.toggleBrewTypeMenu },
-            text
+            this.props.brewType.toUpperCase(),
+            ' ',
+            React.createElement('img', { className: 'menu-button-arrow', src: './public/down-arrow.png' })
         );
     }
 });

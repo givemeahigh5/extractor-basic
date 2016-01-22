@@ -238,11 +238,10 @@ var ExtractionWidget = React.createClass({
 var BrewTypeSelectorButton = React.createClass({
 
     render: function() {
-        var text = this.props.showBrewTypeMenu ? "Select" : this.props.brewType.toUpperCase();
 
         return (
             <div className='brew-type-toggle' onClick={this.props.toggleBrewTypeMenu}>
-                {text}
+                {this.props.brewType.toUpperCase()} <img className="menu-button-arrow" src="./public/down-arrow.png" />
             </div>
         )
     }

@@ -49,10 +49,10 @@ body {
 
 .brew-type-toggle {
     display: inline-block;
-    width: 100px;
+    width: 130px;
     padding: 10px 15px;
     background-color: #36d1d3;
-    text-align: center;
+    text-align: right;
 }
 
 .brew-type-menu {
@@ -76,6 +76,11 @@ body {
     font-weight: bold;
     color: #ffffff;
     text-align: center;
+}
+
+.menu-button-arrow {
+    padding-left: 10px;
+    vertical-align: bottom;
 }
 
 
